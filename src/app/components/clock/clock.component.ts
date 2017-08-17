@@ -36,7 +36,7 @@ export class ClockComponent implements OnInit {
       this.mm = this.formatTime(this.date.getMinutes()) ;
       this.ss = this.formatTime(this.date.getSeconds()) ;
       
-      this.setTimeFormat(12);
+      this.setTimeFormat(24);
 
     },1000) // <-- 1000  miliseconds = 1 second
   }
