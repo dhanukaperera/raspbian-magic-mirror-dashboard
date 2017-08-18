@@ -29,9 +29,10 @@ export class ClockComponent implements OnInit {
     //this.clock = db.list('/db');
     this.clock = db.object('/db/clock/', { preserveSnapshot: true })
     this.clock .subscribe(snapshot => {
-     console.log(snapshot.key)
+      
+    /*  console.log(snapshot.key)
      console.log(snapshot.val().display)
-     console.log(snapshot.val().timeformat)
+     console.log(snapshot.val().timeformat) */
 
      this.display = snapshot.val().display;
      this.timeFormat = snapshot.val().timeformat;
