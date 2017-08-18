@@ -1,13 +1,12 @@
-.clock{
+.dateMain{
     font-family: "Segoe UI", Tahoma, sans-serif;
     color: #fff;
-}
-
-.time{
-    font-size: 56px;
 }
 
 .date{
     font-size: 20px;
     margin-top: -10px; 
+    color: #fff;
+    margin-left: 20px;
+    margin-top: -16px;
 }
