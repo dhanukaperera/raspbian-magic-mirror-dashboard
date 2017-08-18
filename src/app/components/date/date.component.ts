@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase,FirebaseObjectObservable } from 'angularfire2/database';
+
 
 @Component({
   selector: 'app-date',
@@ -7,9 +9,87 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DateComponent implements OnInit {
 
-  constructor() { }
+  date:any;
+  display:any;
+  currentDate:Date
+  
+  day:String;
+  month:String;
+  dd;
+  year;
+
+  constructor(db: AngularFireDatabase) {
+     
+    this.date = db.object('/db/date/', { preserveSnapshot: true })
+    this.date .subscribe(snapshot => {
+
+     /* console.log(snapshot.key)
+     console.log(snapshot.val().display) 
+    */
+
+     this.display = snapshot.val().display;     
+   });
+
+   }
 
   ngOnInit() {
+    console.log(new Date());
+    this.createDate();    
   }
+
+  createDate():void{
+    setInterval(()=>{
+      this.currentDate =new Date();
+      this.day = this.formatDay(this.currentDate.toString().split(" ")[0]);
+      this.month = this.formatMonth(this.currentDate.toString().split(" ")[1]);
+      this.dd = this.currentDate.toString().split(" ")[2];
+      this.year = this.currentDate.toString().split(" ")[3];      
+    },1000);
+  }
+
+  formatDay(d):String{
+    let formatedDay = null;
+    switch(d){
+      case "Mon":
+        formatedDay = "Monday";
+        break;
+      case "Tue":
+        formatedDay = "Tuesday";
+        break;
+      case "Web":
+        formatedDay = "Wednesday";
+        break;
+      case "Thu":
+        formatedDay = "Thursday";
+        break;
+      case "Fri":
+        formatedDay = "Friday";
+        break;
+      case "Sat":
+        formatedDay = "Saturday";
+        break;
+      case "Sun":
+        formatedDay = "Sunday";
+        break;
+    }
+    return formatedDay;
+  }
+
+  formatMonth(m):String{
+    let formatedMonth = null;
+    switch(m){
+      case "Jan":
+      formatedMonth = "January";
+      break;
+      // Add the rest
+      case "Aug":
+      formatedMonth = "Auguest";
+      break;
+    }
+    return formatedMonth;
+  }
+
+
+  
 
 }
