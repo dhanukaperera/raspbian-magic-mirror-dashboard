@@ -1,0 +1,16 @@
+<div class="events">
+  <!-- <ul>
+    <li><i class="fa fa-calendar" aria-hidden="true"> 09 Aug : Meeting with Joe.</i></li>
+    <li><i class="fa fa-calendar" aria-hidden="true"> 11 Aug : Amaya's Birthday.</i></li>
+    <li><i class="fa fa-calendar" aria-hidden="true"> 15 Aug : Pizza Friday.</i></li>
+    <li><i class="fa fa-calendar" aria-hidden="true"> 17 Aug : Client Meeting.</i></li>
+  </ul> -->
+
+  <ul>
+    <li *ngFor="let item of items | async">
+      <i class="fa fa-calendar" aria-hidden="true"></i> {{ item.date}} : {{ item.name}} 
+    </li>
+  </ul>
+
+
+</div>

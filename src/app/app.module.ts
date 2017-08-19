@@ -7,12 +7,14 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AppComponent } from './app.component';
 import { ClockComponent } from './components/clock/clock.component';
 import { DateComponent } from './components/date/date.component';
+import { EventsComponent } from './components/events/events.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClockComponent,
-    DateComponent
+    DateComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
