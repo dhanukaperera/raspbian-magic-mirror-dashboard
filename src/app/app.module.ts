@@ -10,6 +10,7 @@ import { DateComponent } from './components/date/date.component';
 import { EventsComponent } from './components/events/events.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { WeatherComponent } from './components/weather/weather.component';
+import { ComplimentsComponent } from './components/compliments/compliments.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { WeatherComponent } from './components/weather/weather.component';
     DateComponent,
     EventsComponent,
     TodoComponent,
-    WeatherComponent
+    WeatherComponent,
+    ComplimentsComponent
   ],
   imports: [
     BrowserModule,

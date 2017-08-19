@@ -8,13 +8,13 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 1280, height: 700,frame:false})
+  win = new BrowserWindow({width: 1366, height: 768,frame:false})
 
   // and load the index.html of the app.
   win.loadURL(`file://${__dirname}/index.html`)
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  //win.webContents.openDevTools()
 
   win.setMenu(null);
 
