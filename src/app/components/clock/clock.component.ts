@@ -75,3 +75,10 @@ export class ClockComponent implements OnInit {
   }
 
 }
+
+
+/**
+ * bug
+ * when the time is 12 midnight it display as -12 in 12 hours format!
+ * Fix it
+ */
