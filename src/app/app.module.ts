@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { ClockComponent } from './components/clock/clock.component';
 import { DateComponent } from './components/date/date.component';
 import { EventsComponent } from './components/events/events.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClockComponent,
     DateComponent,
-    EventsComponent
+    EventsComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

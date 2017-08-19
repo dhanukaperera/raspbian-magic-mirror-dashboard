@@ -1,0 +1,7 @@
+<div class="todo">
+   <ul>
+    <li *ngFor="let item of items | async">
+      <i class="fa fa-list-ul" aria-hidden="true"></i> {{item.$value}}
+    </li>
+  </ul>
+</div>
