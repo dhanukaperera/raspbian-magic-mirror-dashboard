@@ -11,9 +11,9 @@ import 'rxjs/add/operator/map';
 
 export class TodoComponent implements OnInit {
 
-//url="http://localhost:5000/drugs/getAll";
-  url="https://jsonplaceholder.typicode.com/posts";
-  //url="http://192.168.8.101:4562/sendtask";
+
+  //url="https://jsonplaceholder.typicode.com/posts";
+  url="http://192.168.8.100:4562/sendtask";
   data:any;
 
   taskList:any;
@@ -27,20 +27,26 @@ export class TodoComponent implements OnInit {
 
     // Code 
     //this.http.get(this.url).map(r=>r.json()).subscribe(d=>console.log(d.data[0]));
+    this.getTaskData();
   }
 
   ngOnInit() {
-    setInterval(()=>{
+    /* setInterval(()=>{
       this.getTaskData();
     },10000)
-    
+     */
   }
 
   getTaskData():void{
+    /* this.http.get(this.url).map(result=>result.json()).subscribe(data=>{
+        this.taskList = data.data[0];
+        console.log(this.taskList);
+    }) */
+
     this.http.get(this.url).map(result=>result.json()).subscribe(data=>{
-        this.taskList = data;
-        console.log(data);
-    })
+      this.taskList = (data.data);
+      console.log(this.taskList);
+  })
   }
  
 
