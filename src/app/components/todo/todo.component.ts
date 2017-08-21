@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+//import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Http,Response,Jsonp, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -18,9 +18,9 @@ export class TodoComponent implements OnInit {
 
   taskList:any;
 
-  items: FirebaseListObservable<any>;
-  constructor(db: AngularFireDatabase,private http:Http) { 
-    this.items = db.list('/db/todo');
+  //items: FirebaseListObservable<any>;
+  constructor(/* db: AngularFireDatabase, */private http:Http) { 
+    //this.items = db.list('/db/todo');
 
 
     //this.http.get(this.url).map(r=>r.json()).subscribe(d=>console.log(d));
