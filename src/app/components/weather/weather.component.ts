@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { Http,Response,Jsonp, URLSearchParams} from '@angular/http';
-import 'rxjs/add/operator/map';
+
 import DarkSkyApi from 'dark-sky-api';
 
 @Component({
@@ -10,31 +9,46 @@ import DarkSkyApi from 'dark-sky-api';
 })
 export class WeatherComponent implements OnInit {
 
-  
-  //private apiUrl:string;
   private apiKey:string;
-  private latitude:string;
-  private longitude:string;
+  /* private latitude:string;
+  private longitude:string; */
 
-  private url:string;
-  private forecastData:any;
+  private temperature:string;
+  private ctiy:String;
+  private weather:String
+
+  private weatherData:any;
 
   constructor() { 
     this.apiKey = "ec5efcbb0edafcbf140a73289ea588ff";
-    this.latitude="6.9010";
-    this.longitude = "79.8549";
-
-    const position = {
-      latitude: this.latitude, 
-      longitude: this.latitude
-    };
-
+  /*   this.longitude="6.9497";
+    this.latitude = "80.7891"; */
+    this.ctiy = "Kollupitiya";
+  
     DarkSkyApi.apiKey = this.apiKey;
-    DarkSkyApi.loadCurrent(position)
-    .then(result => console.log(result));
+
+    this.getWeatherData();
+
   }
 
   ngOnInit() {
+   
   }
 
+  
+  getWeatherData():void{
+ /*    const position = {
+      latitude: this.latitude, 
+      longitude: this.latitude
+    }; */
+
+    DarkSkyApi.loadCurrent().then(result => {
+      console.log(result)
+      this.weatherData = result;
+
+      this.temperature = this.weatherData.temperature;
+      this.weather = this.weatherData.summary;
+    });
+
+  }
 }
