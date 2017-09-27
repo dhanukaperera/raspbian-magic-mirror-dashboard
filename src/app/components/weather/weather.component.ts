@@ -8,6 +8,7 @@ import DarkSkyApi from 'dark-sky-api';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
+  //exporting at 
 
   private apiKey:string;
   /* private latitude:string;

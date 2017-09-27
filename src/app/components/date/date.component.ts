@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase,FirebaseObjectObservable } from 'angularfire2/database';
 
-
+//attribute name
 @Component({
   selector: 'app-date',
   templateUrl: './date.component.html',
@@ -18,6 +18,7 @@ export class DateComponent implements OnInit {
   dd;
   year;
 
+  
   constructor(db: AngularFireDatabase) {
      
     this.date = db.object('/db/date/', { preserveSnapshot: true })
