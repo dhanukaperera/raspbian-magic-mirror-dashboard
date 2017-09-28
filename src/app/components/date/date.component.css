@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 .dateMain{
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    
 }
 
 .date{
     font-size: 20px;
-    color: #fff;
-    margin-left: 20px;
+   
+    margin-right: 20px;
     
 }
