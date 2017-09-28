@@ -82,9 +82,38 @@ export class DateComponent implements OnInit {
       case "Jan":
       formatedMonth = "January";
       break;
-      // Add the rest
+      case "Feb":
+      formatedMonth = "Febuary";
+      break;
+      case "Mar":
+      formatedMonth = "March";
+      break;
+      case "Apr":
+      formatedMonth = "April";
+      break;
+      case "May":
+      formatedMonth = "May";
+      break;
+      case "Jun":
+      formatedMonth = "June";
+      break;
+      case "Jul":
+      formatedMonth = "July";
+      break;
       case "Aug":
       formatedMonth = "Auguest";
+      break;
+      case "Sep":
+      formatedMonth = "September";
+      break;
+      case "Oct":
+      formatedMonth = "October";
+      break;
+      case "Nov":
+      formatedMonth = "November";
+      break;
+      case "Dec":
+      formatedMonth = "December";
       break;
     }
     return formatedMonth;
