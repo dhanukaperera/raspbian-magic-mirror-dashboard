@@ -17,15 +17,13 @@ import DarkSkyApi from 'dark-sky-api';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-  // exporting at
 
   private apiKey: string;
-  /* private latitude:string;
-  private longitude:string; */
 
   private temperature: any;
   private ctiy: String;
   private weather: String;
+  private icon: string;
 
   private weatherData: any;
 
@@ -34,14 +32,36 @@ export class WeatherComponent implements OnInit {
   private longitude: any;
   private LOCATION_API_KEY: string;
 
+
+  private wi_day_sunny: boolean;
+  private clear_night: boolean;
+  private partly_cloudy_day: boolean;
+  private partly_cloudy_night: boolean;
+  private cloudy: boolean;
+  private rain: boolean;
+  private sleet: boolean;
+  private snow: boolean;
+  private wind: boolean;
+  private fog: boolean;
+
+
   constructor(private http: Http) {
+
+    this.wi_day_sunny = false;
+    this.clear_night = false;
+    this.partly_cloudy_day = false;
+    this.partly_cloudy_night = false;
+    this.cloudy = false;
+    this.rain = false;
+    this.sleet = false;
+    this.snow = false;
+    this.wind = false;
+    this.fog = false;
+
     this.apiKey = 'ec5efcbb0edafcbf140a73289ea588ff';
-    /*   this.longitude="6.9497";
-      this.latitude = "80.7891"; */
     this.ctiy = 'Kollupitiya';
 
     this.LOCATION_API_KEY = 'AIzaSyCXRPUXgm8x5N0BjKcas1zCyL6nzAb9YFY';
-    //this.GET_CITY_API = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.latitude},${this.longitude}&key=${this.LOCATION_API_KEY}`;
 
     DarkSkyApi.apiKey = this.apiKey;
 
@@ -54,14 +74,8 @@ export class WeatherComponent implements OnInit {
   }
 
 
-  getWeatherData(): void {
-    /*    const position = {
-         latitude: this.latitude,
-         longitude: this.latitude
-       }; */
 
-    // AIzaSyCXRPUXgm8x5N0BjKcas1zCyL6nzAb9YFY - Google API KEY
-    // https://maps.googleapis.com/maps/api/geocode/json?latlng=7.1216460999999995,79.87920249999999&key=AIzaSyCXRPUXgm8x5N0BjKcas1zCyL6nzAb9YFY
+  getWeatherData(): void {
 
     DarkSkyApi.loadCurrent().then(result => {
       console.log(result);
@@ -69,18 +83,143 @@ export class WeatherComponent implements OnInit {
 
       this.temperature = parseFloat(this.weatherData.temperature).toFixed(0);
       this.weather = this.weatherData.summary;
+      this.icon = this.weatherData.icon;
 
       this.getCurrentCity();
-
-
+      this.setIcon(this.icon);
 
     });
 
   }
-  className = 'wi wi-day-cloudy';
-  abc = true;
 
-  
+  setIcon(icon): void {
+    if (icon === 'clear-day') {
+      this.wi_day_sunny = true;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = false;
+      this.fog = false;
+    } else if (icon === 'clear-night') {
+      this.wi_day_sunny = false;
+      this.clear_night = true;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = false;
+      this.fog = false;
+    } else if (icon === 'partly-cloudy-day') {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = true;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = false;
+      this.fog = false;
+    } else if (icon === 'partly-cloudy-night') {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = true;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = false;
+      this.fog = false;
+    } else if (icon === 'cloudy') {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = true;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = false;
+      this.fog = false;
+    } else if (icon === 'rain') {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = true;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = false;
+      this.fog = false;
+    } else if (icon === 'sleet') {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = true;
+      this.snow = false;
+      this.wind = false;
+      this.fog = false;
+    } else if (icon === 'snow') {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = true;
+      this.wind = false;
+      this.fog = false;
+    } else if (icon === 'wind') {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = true;
+      this.fog = false;
+    } else if (icon === 'fog') {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = false;
+      this.fog = true;
+    } else {
+      this.wi_day_sunny = false;
+      this.clear_night = false;
+      this.partly_cloudy_day = false;
+      this.partly_cloudy_night = false;
+      this.cloudy = false;
+      this.rain = false;
+      this.sleet = false;
+      this.snow = false;
+      this.wind = false;
+      this.fog = false;
+    }
+  }
+
+
+
+
   getCurrentCity(): void {
     let position;
     DarkSkyApi.loadPosition()
@@ -89,7 +228,8 @@ export class WeatherComponent implements OnInit {
         console.log(position);
         this.latitude = position.latitude;
         this.longitude = position.longitude;
-        this.GET_CITY_API = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.latitude},${this.longitude}&key=${this.LOCATION_API_KEY}`;
+        this.GET_CITY_API = `https://maps.googleapis.com/maps/api/geocode/json?latlng=
+                            ${this.latitude},${this.longitude}&key=${this.LOCATION_API_KEY}`;
 
         this.http.get(this.GET_CITY_API).map(result => result.json()).subscribe(data => {
           this.ctiy = (data.results[0].address_components[1].long_name);
@@ -100,16 +240,16 @@ export class WeatherComponent implements OnInit {
       });
   }
 
-/*clear-day	-	wi-day-sunny
-clear-night	- wi-night-clear
-partly-cloudy-day	- wi-day-cloudy
-partly-cloudy-night	- wi-night-alt-cloudy
-cloudy	- wi-cloudy
-rain	-	wi-showers
-sleet	-	wi-sleet
-snow	-	wi-snow
-wind	-	wi-strong-wind
-fog		-		wi-fog
-*/
+  /*clear-day	-	wi-day-sunny
+  clear-night	- wi-night-clear
+  partly-cloudy-day	- wi-day-cloudy
+  partly-cloudy-night	- wi-night-alt-cloudy
+  cloudy	- wi-cloudy
+  rain	-	wi-showers
+  sleet	-	wi-sleet
+  snow	-	wi-snow
+  wind	-	wi-strong-wind
+  fog		-		wi-fog
+  */
 
 }

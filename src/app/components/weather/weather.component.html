@@ -3,24 +3,22 @@
   <div class="flexcontainer">
     
     <p class="temp">{{temperature}} &#176;</p>
-    <p class="city">{{ctiy}}</p>
     <p class="condition">{{weather}}</p>
+    <p class="city">{{ctiy}}</p>
     
   </div>
   <div  class="icon">
     <p >
-      <span *ngIf="display"><i class="wi  wi-day-sunny"></i></span>
-      <span><i class="wi  wi-night-clear"></i></span>
-      
-      <span> <i class="wi  wi-day-cloudy"></i></span>
-      <span> <i class="wi  wi-night-alt-cloudy"></i></span>
-      <span> <i class="wi  wi-cloudy"></i></span>
-      <span> <i class="wi  wi-showers"></i></span>
-      <span> <i class="wi  wi-sleet"></i></span>
-      <span> <i class="wi  wi-snow"></i></span>
-      
-      <span> <i class="wi  wi-strong-wind"></i></span>
-      <span> <i class="wi  wi-fog"></i></span>
+      <span *ngIf="wi_day_sunny"><i class="wi  wi-day-sunny"></i></span>
+      <span *ngIf="clear_night"><i class="wi  wi-night-clear"></i></span>
+      <span *ngIf="partly_cloudy_day"> <i class="wi  wi-day-cloudy"></i></span>
+      <span *ngIf="partly_cloudy_night"> <i class="wi  wi-night-alt-cloudy"></i></span>
+      <span *ngIf="cloudy"> <i class="wi  wi-cloudy"></i></span>
+      <span *ngIf="rain"> <i class="wi  wi-showers"></i></span>
+      <span *ngIf="sleet"> <i class="wi  wi-sleet"></i></span>
+      <span *ngIf="snow"> <i class="wi  wi-snow"></i></span>
+      <span *ngIf="wind"> <i class="wi  wi-strong-wind"></i></span>
+      <span *ngIf="fog"> <i class="wi  wi-fog"></i></span>
     
     </p>
   </div>
