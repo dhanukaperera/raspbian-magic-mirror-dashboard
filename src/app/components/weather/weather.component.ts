@@ -77,7 +77,10 @@ export class WeatherComponent implements OnInit {
     });
 
   }
+  className = 'wi wi-day-cloudy';
+  abc = true;
 
+  
   getCurrentCity(): void {
     let position;
     DarkSkyApi.loadPosition()

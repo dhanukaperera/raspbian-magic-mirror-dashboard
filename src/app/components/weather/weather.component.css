@@ -3,3 +3,12 @@
     font-size: 50px;
     font-family: 'Advent Pro', sans-serif;
 }
+
+.icon{
+    font-size: 70px;
+}
+.Grid {
+    display: flex;
+    flex: 1;
+    padding: 30px;
+  } 

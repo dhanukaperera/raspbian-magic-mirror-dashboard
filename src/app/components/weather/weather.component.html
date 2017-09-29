@@ -1,11 +1,29 @@
+
 <div class="Grid">
   <div class="flexcontainer">
-    <p><i class="wi wi-day-sunny"></i></p>
+    
     <p class="temp">{{temperature}} &#176;</p>
     <p class="city">{{ctiy}}</p>
     <p class="condition">{{weather}}</p>
+    
+  </div>
+  <div  class="icon">
+    <p >
+      <span *ngIf="display"><i class="wi  wi-day-sunny"></i></span>
+      <span><i class="wi  wi-night-clear"></i></span>
+      
+      <span> <i class="wi  wi-day-cloudy"></i></span>
+      <span> <i class="wi  wi-night-alt-cloudy"></i></span>
+      <span> <i class="wi  wi-cloudy"></i></span>
+      <span> <i class="wi  wi-showers"></i></span>
+      <span> <i class="wi  wi-sleet"></i></span>
+      <span> <i class="wi  wi-snow"></i></span>
+      
+      <span> <i class="wi  wi-strong-wind"></i></span>
+      <span> <i class="wi  wi-fog"></i></span>
+    
+    </p>
   </div>
 </div>
-
 
 
