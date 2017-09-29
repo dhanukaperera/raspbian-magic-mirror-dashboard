@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+.greeting{
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+}
+
+.quote{
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+}
+ 
+.compliments{
+
+}
