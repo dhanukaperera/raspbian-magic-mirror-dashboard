@@ -100,6 +100,16 @@ export class WeatherComponent implements OnInit {
       });
   }
 
-
+/*clear-day	-	wi-day-sunny
+clear-night	- wi-night-clear
+partly-cloudy-day	- wi-day-cloudy
+partly-cloudy-night	- wi-night-alt-cloudy
+cloudy	- wi-cloudy
+rain	-	wi-showers
+sleet	-	wi-sleet
+snow	-	wi-snow
+wind	-	wi-strong-wind
+fog		-		wi-fog
+*/
 
 }
