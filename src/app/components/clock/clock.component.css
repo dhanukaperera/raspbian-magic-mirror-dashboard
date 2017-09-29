@@ -1,8 +1,9 @@
 
-@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
 .clock{
-    font-family: 'Poiret One', cursive;
-  
+    font-family: 'Advent Pro', sans-serif;
+    padding-top: 30px;
+    padding-right: 30px;
     
 }
 
@@ -12,5 +13,5 @@
 
 .date{
     font-size: 20px;
-    margin-top: -10px; 
+   /* margin-top: -10px; */
 }

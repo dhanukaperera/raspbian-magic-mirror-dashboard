@@ -51,7 +51,7 @@ export class WeatherComponent implements OnInit {
     this.clear_night = false;
     this.partly_cloudy_day = false;
     this.partly_cloudy_night = false;
-    this.cloudy = false;
+    this.cloudy = true;
     this.rain = false;
     this.sleet = false;
     this.snow = false;
@@ -59,6 +59,8 @@ export class WeatherComponent implements OnInit {
     this.fog = false;
 
     this.apiKey = 'ec5efcbb0edafcbf140a73289ea588ff';
+    this.temperature = '89';
+    this.weather = 'Cloudy';
     this.ctiy = 'Kollupitiya';
 
     this.LOCATION_API_KEY = 'AIzaSyCXRPUXgm8x5N0BjKcas1zCyL6nzAb9YFY';
