@@ -19,13 +19,13 @@ export class TodoComponent implements OnInit {
   
   constructor(private http:Http) { 
    
-    this.getTaskData();
+    // this.getTaskData();
   }
 
   ngOnInit() {
-    setInterval(()=>{
+   /* setInterval(()=>{
       this.getTaskData();
-    },1000)
+    },1000)*/
     
   }
 

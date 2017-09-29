@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Germania+One');
 ul{
     list-style-type: none;
 }
@@ -7,8 +8,9 @@ li{
 }
 
 .todo{
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    color: #fff;
-    border:10px;
-    margin-top: 20px;
+    font-family: 'Advent Pro', sans-serif;
+   /* border:10px;
+    margin-top: 20px;*/
+    margin-left: -10px;
+    padding-top: 10px;
 }

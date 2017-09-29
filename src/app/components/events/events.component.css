@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
 ul{
     list-style-type: none;
 }
@@ -7,7 +8,7 @@ li{
 }
 
 .events{
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    color: #fff;
-    margin-top: 20px;
+    font-family: 'Advent Pro', sans-serif;
+    margin-left: -10px;
+    margin-top: -20px;
 }
