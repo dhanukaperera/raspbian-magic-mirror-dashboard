@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Germania+One');
-ul{
-    list-style-type: none;
+ul {
+  list-style-type: none;
 }
 
-li{
-    font-size: 20px;
+li {
+  font-size: 20px;
 }
 
-.todo{
-    font-family: 'Advent Pro', sans-serif;
-   /* border:10px;
+.todo {
+  font-family: 'Advent Pro', sans-serif;
+  /* border:10px;
     margin-top: 20px;*/
-    margin-left: -10px;
-    padding-top: 10px;
+  margin-left: -10px;
+  padding-top: 10px;
 }

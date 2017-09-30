@@ -1,24 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
-.temp{
-    font-size: 50px;
-    font-family: 'Advent Pro', sans-serif;
+.temp {
+  font-size: 50px;
+  font-family: 'Advent Pro', sans-serif;
 }
 
-.icon{
-    font-size: 70px;
+.icon {
+  font-size: 70px;
 }
+
 .Grid {
-    display: flex;
-    flex: 1;
-    padding: 30px;
-  } 
+  display: flex;
+  flex: 1;
+  padding: 30px;
+}
 
-  .condition{
-    font-family: 'Advent Pro', sans-serif;
-    font-size: 30px;
-  }
+.condition {
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 30px;
+}
 
-  .city{
-    font-family: 'Advent Pro', sans-serif;
-    font-size: 20px;
-  }
+.city {
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 20px;
+}

@@ -1,16 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
-.dateMain{
-    font-family: 'Advent Pro', sans-serif;
-    
+.dateMain {
+  font-family: 'Advent Pro', sans-serif;
 }
 
-.dateMain{
-   
-}
-.date{
-    font-size: 20px;
-    padding-right: 30px;
-   
-    margin-top: -10px;
-    
+.date {
+  font-size: 20px;
+  padding-right: 30px;
+  margin-top: -10px;
 }

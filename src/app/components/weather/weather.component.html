@@ -1,14 +1,13 @@
-
 <div class="Grid">
   <div class="flexcontainer">
-    
+
     <p class="temp">{{temperature}} &#176;</p>
     <p class="condition">{{weather}}</p>
     <p class="city">{{ctiy}}</p>
-    
+
   </div>
-  <div  class="icon">
-    <p >
+  <div class="icon">
+    <p>
       <span *ngIf="wi_day_sunny"><i class="wi  wi-day-sunny"></i></span>
       <span *ngIf="clear_night"><i class="wi  wi-night-clear"></i></span>
       <span *ngIf="partly_cloudy_day"> <i class="wi  wi-day-cloudy"></i></span>
@@ -19,9 +18,7 @@
       <span *ngIf="snow"> <i class="wi  wi-snow"></i></span>
       <span *ngIf="wind"> <i class="wi  wi-strong-wind"></i></span>
       <span *ngIf="fog"> <i class="wi  wi-fog"></i></span>
-    
+
     </p>
   </div>
 </div>
-
-

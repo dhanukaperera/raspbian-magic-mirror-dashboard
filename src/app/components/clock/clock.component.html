@@ -1,11 +1,8 @@
-<div class="container-fluid clock component" > 
+<div class="container-fluid clock component">
   <div *ngIf="display">
-    <p class="time" >{{hh}} : {{mm}} <span *ngIf="displaySeconds">: {{ss}}</span>  {{period}}</p>
+    <p class="time">{{hh}} : {{mm}} <span *ngIf="displaySeconds">: {{ss}}</span> {{period}}</p>
   </div>
-   <div>
+  <div>
     <p class="date"> <span *ngIf="!display"><br></span></p>
-  </div> 
-  
-  
-  
+  </div>
 </div>

@@ -2,12 +2,14 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+
 import {
   Http,
   Response,
   Jsonp,
   URLSearchParams
 } from '@angular/http';
+
 import 'rxjs/add/operator/map';
 import DarkSkyApi from 'dark-sky-api';
 
@@ -16,8 +18,8 @@ import DarkSkyApi from 'dark-sky-api';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css']
 })
-export class WeatherComponent implements OnInit {
 
+export class WeatherComponent implements OnInit {
   private apiKey: string;
 
   private temperature: any;
@@ -32,7 +34,6 @@ export class WeatherComponent implements OnInit {
   private longitude: any;
   private LOCATION_API_KEY: string;
 
-
   private wi_day_sunny: boolean;
   private clear_night: boolean;
   private partly_cloudy_day: boolean;
@@ -43,7 +44,6 @@ export class WeatherComponent implements OnInit {
   private snow: boolean;
   private wind: boolean;
   private fog: boolean;
-
 
   constructor(private http: Http) {
 
@@ -68,14 +68,11 @@ export class WeatherComponent implements OnInit {
     DarkSkyApi.apiKey = this.apiKey;
 
     this.getWeatherData();
-
   }
 
   ngOnInit() {
 
   }
-
-
 
   getWeatherData(): void {
 
@@ -219,9 +216,6 @@ export class WeatherComponent implements OnInit {
     }
   }
 
-
-
-
   getCurrentCity(): void {
     let position;
     DarkSkyApi.loadPosition()
@@ -236,7 +230,6 @@ export class WeatherComponent implements OnInit {
         this.http.get(this.GET_CITY_API).map(result => result.json()).subscribe(data => {
           this.ctiy = (data.results[0].address_components[1].long_name);
           console.log(this.ctiy);
-
         });
 
       });

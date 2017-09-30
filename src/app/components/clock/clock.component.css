@@ -1,17 +1,15 @@
-
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
-.clock{
-    font-family: 'Advent Pro', sans-serif;
-    padding-top: 30px;
-    padding-right: 30px;
-    
+.clock {
+  font-family: 'Advent Pro', sans-serif;
+  padding-top: 30px;
+  padding-right: 30px;
 }
 
-.time{
-    font-size: 56px;
+.time {
+  font-size: 56px;
 }
 
-.date{
-    font-size: 20px;
-   /* margin-top: -10px; */
+.date {
+  font-size: 20px;
+  /* margin-top: -10px; */
 }
