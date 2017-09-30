@@ -14,6 +14,7 @@ import { EventsComponent } from './components/events/events.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { ComplimentsComponent } from './components/compliments/compliments.component';
+import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ComplimentsComponent } from './components/compliments/compliments.compo
     EventsComponent,
     TodoComponent,
     WeatherComponent,
-    ComplimentsComponent
+    ComplimentsComponent,
+    NewsfeedComponent
   ],
   imports: [
     BrowserModule,
