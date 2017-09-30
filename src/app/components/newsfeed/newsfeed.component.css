@@ -3,4 +3,13 @@
     padding-right: 15%;
     
     text-align: center;
+    -webkit-animation-duration: 10s;
+
+    -webkit-animation-iteration-count: infinite;
+  
+   
+    
+}
+.newsfeed{
+  
 }

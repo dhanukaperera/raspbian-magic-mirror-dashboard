@@ -51,6 +51,10 @@ export class NewsfeedComponent implements OnInit {
         console.log(this.newsArray);
 
         let i = 0;
+        this.title = this.newsArray[i].title;
+        this.description = this.newsArray[i].description;
+        this.author = this.newsArray[i].author;
+        i++;
         setInterval(() => {
           // this.reloadData();
           if (i === this.newsArray.length) {
@@ -62,7 +66,7 @@ export class NewsfeedComponent implements OnInit {
 
           i++;
 
-        }, 5000);
+        }, 15000);
     });
 
 /*
