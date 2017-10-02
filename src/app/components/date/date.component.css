@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
 .dateMain {
   font-family: 'Advent Pro', sans-serif;
+  overflow:hidden;
 }
 
 .date {

@@ -11,4 +11,5 @@ li {
   font-family: 'Advent Pro', sans-serif;
   margin-left: -10px;
   margin-top: -20px;
+  overflow:hidden;
 }

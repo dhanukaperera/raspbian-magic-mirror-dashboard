@@ -3,6 +3,7 @@
   font-family: 'Advent Pro', sans-serif;
   padding-top: 30px;
   padding-right: 30px;
+  overflow:hidden;
 }
 
 .time {
