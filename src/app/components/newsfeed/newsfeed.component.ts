@@ -51,14 +51,11 @@ export class NewsfeedComponent implements OnInit {
      this.source = snapshot.val().source;
      this.interval = snapshot.val().interval;
     
-    });
-    
-  
-   
+    }); 
    }
 
   ngOnInit() {
-   
+    
     setTimeout(() => {
       this.getNewsFeed();
       this.run();
