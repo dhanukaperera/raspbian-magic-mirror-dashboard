@@ -9,8 +9,13 @@ import {
   Jsonp,
   URLSearchParams
 } from '@angular/http';
-
 import 'rxjs/add/operator/map';
+
+import {
+  AngularFireDatabase,
+  FirebaseObjectObservable
+} from 'angularfire2/database';
+
 import DarkSkyApi from 'dark-sky-api';
 
 @Component({
@@ -34,6 +39,8 @@ export class WeatherComponent implements OnInit {
   private longitude: any;
   private LOCATION_API_KEY: string;
 
+  private type: string;
+
   private wi_day_sunny: boolean;
   private clear_night: boolean;
   private partly_cloudy_day: boolean;
@@ -45,7 +52,46 @@ export class WeatherComponent implements OnInit {
   private wind: boolean;
   private fog: boolean;
 
-  constructor(private http: Http) {
+  private dataString: any;
+
+  constructor(private http: Http,db: AngularFireDatabase) {
+
+    this.dataString = db.object('/db/weather/', {
+      preserveSnapshot: true
+    });
+    
+    
+
+    this.dataString.subscribe(snapshot => {
+       console.log(snapshot.key)
+    // console.log(snapshot);
+  
+      this.type = snapshot.val().type;
+
+  
+     console.log('temp type : ' + this.type);
+      let a;
+     if(this.type === 'F'){
+       console.log('oh i am just C');
+       //this.temperature = (9 * this.temperature)/5 +32;
+       a = (Number.parseInt(this.temperature)*9)/5+ 32;
+       this.temperature = a;
+       this.temperature = parseFloat(a).toFixed(0);
+     }else{
+       console.log('i am just f');
+     
+
+       //a = Number.parseInt(this.temperature) - 100;
+       a = (Number.parseInt(this.temperature) - 32) * 5/9;
+       this.temperature = a;
+       this.temperature = parseFloat(a).toFixed(0);
+     }
+    });
+
+
+  
+    
+
 
     this.wi_day_sunny = false;
     this.clear_night = false;
@@ -62,22 +108,33 @@ export class WeatherComponent implements OnInit {
     this.temperature = '89';
     this.weather = 'Cloudy';
     this.ctiy = 'Kollupitiya';
+    this.type = 'C';
 
     this.LOCATION_API_KEY = 'AIzaSyCXRPUXgm8x5N0BjKcas1zCyL6nzAb9YFY';
 
     DarkSkyApi.apiKey = this.apiKey;
 
+
     this.getWeatherData();
+    //this.changeType();
   }
 
   ngOnInit() {
 
   }
 
-  getWeatherData(): void {
+ 
+  changeType():void{
+   if(this.type === 'F'){
+     console.log('I am chaged to f');
+   }else{
+     console.log('i am just c');
+   }
+  }
 
+  getWeatherData(): void {
     DarkSkyApi.loadCurrent().then(result => {
-      console.log(result);
+     // console.log(result);
       this.weatherData = result;
 
       this.temperature = parseFloat(this.weatherData.temperature).toFixed(0);
@@ -221,7 +278,7 @@ export class WeatherComponent implements OnInit {
     DarkSkyApi.loadPosition()
       .then(pos => {
         position = pos;
-        console.log(position);
+        //console.log(position);
         this.latitude = position.latitude;
         this.longitude = position.longitude;
         this.GET_CITY_API = `https://maps.googleapis.com/maps/api/geocode/json?latlng=
@@ -229,7 +286,7 @@ export class WeatherComponent implements OnInit {
 
         this.http.get(this.GET_CITY_API).map(result => result.json()).subscribe(data => {
           this.ctiy = (data.results[0].address_components[1].long_name);
-          console.log(this.ctiy);
+          //console.log(this.ctiy);
         });
 
       });

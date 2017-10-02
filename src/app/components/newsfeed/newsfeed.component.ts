@@ -71,11 +71,11 @@ export class NewsfeedComponent implements OnInit {
   getNewsFeed(): void {
   
     this.API_URL = `https://newsapi.org/v1/articles?source=${this.source}&sortBy=${this.sortBy}&apiKey=${this.NEWS_API_KEY}`;
-    console.log("URl -->"+this.API_URL);
+    //console.log("URl -->"+this.API_URL);
 
     this.http.get(this.API_URL).map(result => result.json()).subscribe(data => {
       
-       console.log(data);
+       //console.log(data);
         this.newsArray = data.articles;
       //  console.log(this.newsArray);
 

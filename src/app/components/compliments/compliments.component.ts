@@ -21,7 +21,7 @@ export class ComplimentsComponent implements OnInit {
       preserveSnapshot: true
     });
     this.complimentsData.subscribe(snapshot => {
-      console.log(snapshot.val());
+     // console.log(snapshot.val());
       this.displayName = snapshot.val().yourname;
       this.displayMessage = snapshot.val().message;
     });
@@ -34,7 +34,7 @@ export class ComplimentsComponent implements OnInit {
   changeGreeting():void{
     let time = Date().toString();
     let hour = Number.parseInt(time.split(' ')[4].split(':')[0]);
-    console.log(hour);
+    //console.log(hour);
     if(hour >= 6 && hour < 12){
         this.greeting = 'Good moring';
     }else {
