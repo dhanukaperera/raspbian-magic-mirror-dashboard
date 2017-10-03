@@ -61,7 +61,7 @@ export class DateComponent implements OnInit {
       case 'Tue':
         formatedDay = 'Tuesday';
         break;
-      case 'Web':
+      case 'Wed':
         formatedDay = 'Wednesday';
         break;
       case 'Thu':
