@@ -35,6 +35,8 @@ export class NewsfeedComponent implements OnInit {
 
   private interval: number;
 
+  private display: boolean;
+
   constructor(private http: Http,db: AngularFireDatabase) {
     this.source = 'bbc-news';
     this.sortBy = 'top';
@@ -50,6 +52,7 @@ export class NewsfeedComponent implements OnInit {
      this.sortBy = snapshot.val().sortBy;
      this.source = snapshot.val().source;
      this.interval = snapshot.val().interval;
+     this.display = snapshot.val().display;
     
     }); 
    }

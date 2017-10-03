@@ -15,6 +15,7 @@ export class ComplimentsComponent implements OnInit {
   private displayMessage: string;
   private greeting: string;
   private complimentsData: any;
+  private display: boolean;
 
   constructor(db: AngularFireDatabase) {
     this.complimentsData = db.object('/db/compliments/', {
@@ -24,6 +25,7 @@ export class ComplimentsComponent implements OnInit {
      // console.log(snapshot.val());
       this.displayName = snapshot.val().yourname;
       this.displayMessage = snapshot.val().message;
+      this.display = snapshot.val().display;
     });
    }
 

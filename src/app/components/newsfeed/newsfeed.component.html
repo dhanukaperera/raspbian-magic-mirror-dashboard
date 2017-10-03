@@ -1,5 +1,7 @@
 <div class="newsfeed">
-  <p class="news-body animated pulse"><strong>{{title}} : </strong> 
-    {{description}} <em> ({{author}})</em></p>
+  <div *ngIf="display">
+      <p class="news-body animated pulse"><strong>{{title}} : </strong> 
+        {{description}} <em> ({{author}})</em></p>
+  </div>
     
 </div>

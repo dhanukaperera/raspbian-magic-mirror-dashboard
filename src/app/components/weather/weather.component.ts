@@ -54,6 +54,8 @@ export class WeatherComponent implements OnInit {
 
   private dataString: any;
 
+  private display: boolean;
+
   constructor(private http: Http,db: AngularFireDatabase) {
 
     this.dataString = db.object('/db/weather/', {
@@ -67,7 +69,7 @@ export class WeatherComponent implements OnInit {
     // console.log(snapshot);
   
       this.type = snapshot.val().type;
-
+      this.display = snapshot.val().display;
   
      console.log('temp type : ' + this.type);
       let a;

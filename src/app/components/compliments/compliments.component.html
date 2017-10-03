@@ -1,4 +1,7 @@
 <div class="compliments">
-    <p class="greeting">{{greeting}} {{displayName}}</p>
-    <p class="quote">{{displayMessage}}</p>
+    <div *ngIf="display">
+            <p class="greeting">{{greeting}} {{displayName}}</p>
+            <p class="quote">{{displayMessage}}</p>
+    </div>
+  
 </div>
