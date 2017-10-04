@@ -68,13 +68,13 @@ export class ClockComponent implements OnInit {
   setTimeFormat(f): void {
     // Show AM if the hours less than 12. Show PM if the hours grater than 12.
     // Subtract 12 for 12 hours time formate, else hide period from 24 hours format.
-    if (f === 12) {
+    if (f === '12') {
       (this.hh < 12) ? this.period = 'AM' : this.period = 'PM';
       if (this.hh > 12) {
         this.hh = this.hh - 12;
         this.hh = this.formatTime(this.hh);
       }
-    } else if (f === 24) {
+    } else if (f === '24') {
       this.period = null;
 
     }
