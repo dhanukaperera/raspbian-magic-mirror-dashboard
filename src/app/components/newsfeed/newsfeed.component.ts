@@ -33,7 +33,7 @@ export class NewsfeedComponent implements OnInit {
 
   private complimentsData: any;
 
-  private interval: number;
+  private interval: any;
 
   private display: boolean;
 
@@ -66,6 +66,9 @@ export class NewsfeedComponent implements OnInit {
   }
 
   run():void{
+    this.interval = parseInt(this.interval);
+    console.log('Interval ==='+typeof(this.interval));
+    console.log('Interval >>>'+this.interval);
       setInterval(() => {
       this.getNewsFeed();
     },this.interval);
