@@ -1,7 +1,10 @@
 <div class="Grid" *ngIf="display">
       <div class="flexcontainer">
           
-              <p class="temp">{{temperature}} &#176;</p>
+              <p class="temp"> 
+                <span *ngIf="display_C"> {{temperature_C}} </span> 
+                <span *ngIf="display_F"> {{temperature_F}} </span>
+                &#176;</p>
               <p class="condition">{{weather}}</p>
               <p class="city">{{ctiy}}</p>
           

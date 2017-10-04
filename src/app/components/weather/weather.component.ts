@@ -12,7 +12,12 @@ import DarkSkyApi from 'dark-sky-api';
 export class WeatherComponent implements OnInit {
   private apiKey : string;
 
-  private temperature : any;
+  private temperature_C : any;
+  private temperature_F : any;
+
+  private display_C : boolean
+  private display_F : boolean
+
   private ctiy : String;
   private weather : String;
   private icon : string;
@@ -42,6 +47,8 @@ export class WeatherComponent implements OnInit {
   private display : boolean;
 
   constructor(private http : Http, private db : AngularFireDatabase) {
+    this.display_C = true;
+    this.display_F = false;
 
     this.dataString = db.object('/db/weather/', {preserveSnapshot: true});
 
@@ -60,21 +67,15 @@ export class WeatherComponent implements OnInit {
 
         console.log('temp type : ' + this.type);
        
-        let a;
-        if (this.type === 'F') {
-          console.log('oh i am just C');
-          //this.temperature = (9 * this.temperature)/5 +32;
-          a = (Number.parseInt(this.temperature) * 9) / 5 + 32;
-          this.temperature = a;
-          this.temperature = parseFloat(a).toFixed(0);
-        } else {
-          console.log('i am just f');
+       if(this.type === 'F') {
+          this.display_C = true;
+          this.display_F = false;
+       } else if (this.type === 'C') {
+          this.display_C = false;
+          this.display_F = true;
+       }
 
-          //a = Number.parseInt(this.temperature) - 100;
-          a = (Number.parseInt(this.temperature) - 32) * 5 / 9;
-          this.temperature = a;
-          this.temperature = parseFloat(a).toFixed(0);
-        }
+       this.updateDB();
        
       });
 
@@ -90,7 +91,7 @@ export class WeatherComponent implements OnInit {
     this.fog = false;
 
     this.apiKey = 'ec5efcbb0edafcbf140a73289ea588ff';
-    this.temperature = '89';
+    this.temperature_C = '89';
     this.weather = 'Cloudy';
     this.ctiy = 'Kollupitiya';
     this.type = 'C';
@@ -100,20 +101,25 @@ export class WeatherComponent implements OnInit {
     DarkSkyApi.apiKey = this.apiKey;
 
     this.getWeatherData();
-    //this.changeType();
+    this.convertToC();
+    
+    
   }
 
   ngOnInit() {
-   setTimeout(()=>{
-    this.updateDB();
-   },5000)
+   
   }
+
+ convertToC() : void{
+    this.temperature_F = (this.temperature_C - 32) * 5/9;
+    this.temperature_F = parseFloat(this.temperature_F).toFixed(0);
+ }
 
   updateDB():void{
     console.log('I just got updated! mmm');
       this.db.object('/db/weather/').update({
         ctiy:this.ctiy,
-        temperature:this.temperature,
+        temperature:this.temperature_C,
         weather:this.weather
       });
   }
@@ -133,7 +139,7 @@ export class WeatherComponent implements OnInit {
         // console.log(result);
         this.weatherData = result;
 
-        this.temperature = parseFloat(this.weatherData.temperature).toFixed(0);
+        this.temperature_C = parseFloat(this.weatherData.temperature).toFixed(0);
         this.weather = this.weatherData.summary;
         this.icon = this.weatherData.icon;
 
