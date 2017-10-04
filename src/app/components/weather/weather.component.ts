@@ -74,7 +74,7 @@ export class WeatherComponent implements OnInit {
           this.display_C = false;
           this.display_F = true;
        }
-
+       this.convertToC();
        this.updateDB();
        
       });
@@ -107,7 +107,9 @@ export class WeatherComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+   setTimeout(()=>{
+    this.updateDB();
+   },5000);
   }
 
  convertToC() : void{
