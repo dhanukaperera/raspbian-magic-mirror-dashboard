@@ -1,99 +1,82 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import {
-  Http,
-  Response,
-  Jsonp,
-  URLSearchParams
-} from '@angular/http';
+import {Http, Response, Jsonp, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import {
-  AngularFireDatabase,
-  FirebaseObjectObservable
-} from 'angularfire2/database';
+import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database';
 
 import DarkSkyApi from 'dark-sky-api';
 
-@Component({
-  selector: 'app-weather',
-  templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css']
-})
+@Component({selector: 'app-weather', templateUrl: './weather.component.html', styleUrls: ['./weather.component.css']})
 
 export class WeatherComponent implements OnInit {
-  private apiKey: string;
+  private apiKey : string;
 
-  private temperature: any;
-  private ctiy: String;
-  private weather: String;
-  private icon: string;
+  private temperature : any;
+  private ctiy : String;
+  private weather : String;
+  private icon : string;
 
-  private weatherData: any;
+  private weatherData : any;
 
-  private GET_CITY_API: string;
-  private latitude: any;
-  private longitude: any;
-  private LOCATION_API_KEY: string;
+  private GET_CITY_API : string;
+  private latitude : any;
+  private longitude : any;
+  private LOCATION_API_KEY : string;
 
-  private type: string;
+  private type : string;
 
-  private wi_day_sunny: boolean;
-  private clear_night: boolean;
-  private partly_cloudy_day: boolean;
-  private partly_cloudy_night: boolean;
-  private cloudy: boolean;
-  private rain: boolean;
-  private sleet: boolean;
-  private snow: boolean;
-  private wind: boolean;
-  private fog: boolean;
+  private wi_day_sunny : boolean;
+  private clear_night : boolean;
+  private partly_cloudy_day : boolean;
+  private partly_cloudy_night : boolean;
+  private cloudy : boolean;
+  private rain : boolean;
+  private sleet : boolean;
+  private snow : boolean;
+  private wind : boolean;
+  private fog : boolean;
 
-  private dataString: any;
+  private dataString : any;
 
-  private display: boolean;
+  private display : boolean;
 
-  constructor(private http: Http,db: AngularFireDatabase) {
+  constructor(private http : Http, private db : AngularFireDatabase) {
 
-    this.dataString = db.object('/db/weather/', {
-      preserveSnapshot: true
-    });
-    
-    
+    this.dataString = db.object('/db/weather/', {preserveSnapshot: true});
 
-    this.dataString.subscribe(snapshot => {
-       console.log(snapshot.key)
-    // console.log(snapshot);
-  
-      this.type = snapshot.val().type;
-      this.display = snapshot.val().display;
-  
-     console.log('temp type : ' + this.type);
-      let a;
-     if(this.type === 'F'){
-       console.log('oh i am just C');
-       //this.temperature = (9 * this.temperature)/5 +32;
-       a = (Number.parseInt(this.temperature)*9)/5+ 32;
-       this.temperature = a;
-       this.temperature = parseFloat(a).toFixed(0);
-     }else{
-       console.log('i am just f');
-     
+    this
+      .dataString
+      .subscribe(snapshot => {
+        console.log(snapshot.key)
+        // console.log(snapshot);
 
-       //a = Number.parseInt(this.temperature) - 100;
-       a = (Number.parseInt(this.temperature) - 32) * 5/9;
-       this.temperature = a;
-       this.temperature = parseFloat(a).toFixed(0);
-     }
-    });
+        this.type = snapshot
+          .val()
+          .type;
+        this.display = snapshot
+          .val()
+          .display;
 
+        console.log('temp type : ' + this.type);
+       
+        let a;
+        if (this.type === 'F') {
+          console.log('oh i am just C');
+          //this.temperature = (9 * this.temperature)/5 +32;
+          a = (Number.parseInt(this.temperature) * 9) / 5 + 32;
+          this.temperature = a;
+          this.temperature = parseFloat(a).toFixed(0);
+        } else {
+          console.log('i am just f');
 
-  
-    
-
+          //a = Number.parseInt(this.temperature) - 100;
+          a = (Number.parseInt(this.temperature) - 32) * 5 / 9;
+          this.temperature = a;
+          this.temperature = parseFloat(a).toFixed(0);
+        }
+       
+      });
 
     this.wi_day_sunny = false;
     this.clear_night = false;
@@ -116,42 +99,53 @@ export class WeatherComponent implements OnInit {
 
     DarkSkyApi.apiKey = this.apiKey;
 
-
     this.getWeatherData();
     //this.changeType();
   }
 
   ngOnInit() {
+   setTimeout(()=>{
+    this.updateDB();
+   },5000)
+  }
+
+  updateDB():void{
+    console.log('I just got updated! mmm');
+      this.db.object('/db/weather/').update({
+        ctiy:this.ctiy,
+        temperature:this.temperature,
+        weather:this.weather
+      });
+  }
+
+  changeType() : void {
+    if(this.type === 'F') {
+      console.log('I am chaged to f');
+    } else {
+      console.log('i am just c');
+    }
+  }
+
+  getWeatherData() : void {
+    DarkSkyApi
+      .loadCurrent()
+      .then(result => {
+        // console.log(result);
+        this.weatherData = result;
+
+        this.temperature = parseFloat(this.weatherData.temperature).toFixed(0);
+        this.weather = this.weatherData.summary;
+        this.icon = this.weatherData.icon;
+
+        this.getCurrentCity();
+        this.setIcon(this.icon);
+
+      });
 
   }
 
- 
-  changeType():void{
-   if(this.type === 'F'){
-     console.log('I am chaged to f');
-   }else{
-     console.log('i am just c');
-   }
-  }
-
-  getWeatherData(): void {
-    DarkSkyApi.loadCurrent().then(result => {
-     // console.log(result);
-      this.weatherData = result;
-
-      this.temperature = parseFloat(this.weatherData.temperature).toFixed(0);
-      this.weather = this.weatherData.summary;
-      this.icon = this.weatherData.icon;
-
-      this.getCurrentCity();
-      this.setIcon(this.icon);
-
-    });
-
-  }
-
-  setIcon(icon): void {
-    if (icon === 'clear-day') {
+  setIcon(icon) : void {
+    if(icon === 'clear-day') {
       this.wi_day_sunny = true;
       this.clear_night = false;
       this.partly_cloudy_day = false;
@@ -275,9 +269,10 @@ export class WeatherComponent implements OnInit {
     }
   }
 
-  getCurrentCity(): void {
+  getCurrentCity() : void {
     let position;
-    DarkSkyApi.loadPosition()
+    DarkSkyApi
+      .loadPosition()
       .then(pos => {
         position = pos;
         //console.log(position);
@@ -286,10 +281,14 @@ export class WeatherComponent implements OnInit {
         this.GET_CITY_API = `https://maps.googleapis.com/maps/api/geocode/json?latlng=
                             ${this.latitude},${this.longitude}&key=${this.LOCATION_API_KEY}`;
 
-        this.http.get(this.GET_CITY_API).map(result => result.json()).subscribe(data => {
-          this.ctiy = (data.results[0].address_components[1].long_name);
-          //console.log(this.ctiy);
-        });
+        this
+          .http
+          .get(this.GET_CITY_API)
+          .map(result => result.json())
+          .subscribe(data => {
+            this.ctiy = (data.results[0].address_components[1].long_name);
+            //console.log(this.ctiy);
+          });
 
       });
   }
